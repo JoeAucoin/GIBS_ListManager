@@ -174,7 +174,7 @@ namespace GIBS.Modules.GIBS_ListManager
 
                 if (key.ToString().Contains(":"))
                 {
-                    char separator = ':'; // Space character
+                    char separator = ':'; //  character
                     string[] keys = key.Split(separator); // returned array
                     parentKey = keys[0].ToString();
                     myList = keys[1].ToString();
@@ -190,25 +190,28 @@ namespace GIBS.Modules.GIBS_ListManager
                 HiddenFieldListName.Value = myList;
                 HiddenFieldParentKey.Value = parentKey;
                 var ctlLists = new ListController();
-                //    ListInfo selList = (ListInfo)ctlLists.GetListEntryInfoItems(selectedList.ToString(), string.Empty, this.PortalId);
-
-                ;
-          //      GV_ListItems.DataSource = ctlLists.GetListEntryInfoItems(selectedList.ToString(), string.Empty, this.PortalId);
+         
                 GV_ListItems.DataSource = ctlLists.GetListEntryInfoItems(myList.ToString(), parentKey.ToString(), this.PortalId);
                 GV_ListItems.DataBind();
                 rowListdetails.Visible = true;
 
                 if (GV_ListItems.Rows.Count < 1)
                 {
-                    // rowListdetails.Visible = true;
+                   
                     lblEntryCount.Text = "0";   // + Localization.GetString("Entries", LocalResourceFile);
                 }
                 else
                 {
-                    // GV_ListItems.Visible = true;
+                    // Can the list be sorted?
+                    ListInfo selList = GetList(key, false);
+                    HiddenFieldEnableSortOrder.Value = selList.EnableSortOrder.ToString();
 
                     lblEntryCount.Text = GV_ListItems.Rows.Count.ToString();    // + " " + Localization.GetString("Entries", LocalResourceFile);
                     HiddenFieldMode.Value = "EditList";
+
+                    GV_ListItems.Columns[2].Visible = selList.EnableSortOrder;
+                    GV_ListItems.Columns[3].Visible = selList.EnableSortOrder;
+                    
                 }
 
                 LinkButtonAddNewItem.Visible = true;
@@ -351,9 +354,9 @@ namespace GIBS.Modules.GIBS_ListManager
 
                 case "addnewitem":
                     entry.ListName = listName.ToString();
-                    if (currentCountOrder.ToString().Length > 0)
+                    if (HiddenFieldEnableSortOrder.Value.ToString().ToLower() == "true")
                     {
-                        entry.SortOrder = Int32.Parse(currentCountOrder.ToString()) + 1;
+                        entry.SortOrder = 1;
                     }
                     else
                     {
@@ -685,7 +688,7 @@ namespace GIBS.Modules.GIBS_ListManager
                     ddlSelectParent.DataTextField = "DisplayName";
                     ddlSelectParent.DataValueField = "EntryID";
                     ddlSelectParent.DataBind();
-
+                    
                     //var removeItem = ddlSelectParent.Items.Cast<ListItem>()
                     //      .Where(x => x.Value.Contains(":"))
                     //      .FirstOrDefault();

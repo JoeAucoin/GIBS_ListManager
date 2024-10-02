@@ -42,7 +42,7 @@
     <Columns>
     <asp:BoundField ItemStyle-Width="150px" DataField="Text" HeaderText="Text" />
     <asp:BoundField ItemStyle-Width="150px" DataField="Value" HeaderText="Value" />
-        <asp:BoundField ItemStyle-Width="150px" DataField="ParentKey" HeaderText="ParentKey" Visible="false" />
+        
     <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Move Up">
         <ItemTemplate>
             <asp:HiddenField ID="Hid_ParentID" Value='<%# Bind("ParentID")%>' runat="server" />
@@ -65,6 +65,7 @@
 				<asp:ImageButton CommandName="deleteme" ID="btnDelete" ImageUrl='/icons/Sigma/Delete_16X16_Standard.png' CommandArgument='<%# Bind("EntryID")%>' runat="server" />
             </ItemTemplate>
         </asp:TemplateField>
+    <asp:BoundField ItemStyle-Width="150px" DataField="ParentKey" HeaderText="ParentKey" Visible="false" />
 </Columns>
 
 </asp:GridView>
@@ -80,7 +81,7 @@
     <asp:HiddenField ID="HiddenFieldParentKey" runat="server" />
     <asp:HiddenField ID="HiddenFieldParentID" runat="server" />
     <asp:HiddenField ID="HiddenFieldMode" runat="server" />
-
+    <asp:HiddenField ID="HiddenFieldEnableSortOrder" runat="server" />
     <div id="rowEntryEdit" runat="server" visible="false">
        
         <div id="rowListName" runat="server" class="dnnFormItem">
