@@ -198,7 +198,7 @@ namespace GIBS.Modules.GIBS_ListManager
                 if (GV_ListItems.Rows.Count < 1)
                 {
                    
-                    lblEntryCount.Text = "0";   // + Localization.GetString("Entries", LocalResourceFile);
+                    lblEntryCount.Text = "0 " + Localization.GetString("Entries", LocalResourceFile);
                 }
                 else
                 {
@@ -206,7 +206,7 @@ namespace GIBS.Modules.GIBS_ListManager
                     ListInfo selList = GetList(key, false);
                     HiddenFieldEnableSortOrder.Value = selList.EnableSortOrder.ToString();
 
-                    lblEntryCount.Text = GV_ListItems.Rows.Count.ToString();    // + " " + Localization.GetString("Entries", LocalResourceFile);
+                    lblEntryCount.Text = GV_ListItems.Rows.Count.ToString() + " " + Localization.GetString("Entries", LocalResourceFile);
                     HiddenFieldMode.Value = "EditList";
 
                     GV_ListItems.Columns[2].Visible = selList.EnableSortOrder;
@@ -317,8 +317,7 @@ namespace GIBS.Modules.GIBS_ListManager
             var listController = new ListController();
 
             var Mode = HiddenFieldMode.Value.ToString();
-            var currentCountOrder = lblEntryCount.Text.ToString().Trim();
-
+           
            
             string entryValue;
             string entryText;
@@ -462,12 +461,7 @@ namespace GIBS.Modules.GIBS_ListManager
             var listName = HiddenFieldListName.Value.ToString();
             var parentKey = HiddenFieldParentKey.Value.ToString();
             var entry = new ListEntryInfo();
-            var currentCountOOrder = lblEntryCount.Text.ToString().Trim();
-            if(currentCountOOrder == "")
-            {
-                currentCountOOrder = "0";
-            }
-
+            
             {
                 if (HiddenFieldEntryID.Value.ToString().Length > 0)
                 {
@@ -497,9 +491,9 @@ namespace GIBS.Modules.GIBS_ListManager
                 {
                     entry.ListName = listName.ToString();
                 }
-                if(chkEnableSortOrder.Checked || currentCountOOrder.ToString().Length > 0)
+                if(chkEnableSortOrder.Checked)
                 {
-                    entry.SortOrder = Int32.Parse(currentCountOOrder.ToString()) + 1;
+                    entry.SortOrder = 1;
                 }
                 else
                 {
@@ -613,6 +607,8 @@ namespace GIBS.Modules.GIBS_ListManager
             txtEntryValue.Text = string.Empty;
             HiddenFieldMode.Value = "AddNewItem";
             valEntryName.Enabled = false;
+            valEntryText.Enabled = true;
+            
             Label1.Text = "Add New Item";
             EnableEditView();
         }

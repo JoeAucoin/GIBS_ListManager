@@ -190,12 +190,12 @@
     <value>Parent Entry:</value>
   </data>
   <data name="valEntryName.ErrorMessage" xml:space="preserve">
-    <value>&lt;br&gt;Name is required</value>
+    <value>Name is required</value>
   </data>
   <data name="valEntryText.ErrorMessage" xml:space="preserve">
-    <value>&lt;br&gt;Text is required</value>
+    <value>Text is required</value>
   </data>
   <data name="valEntryValue.ErrorMessage" xml:space="preserve">
-    <value>&lt;br&gt;Value is required</value>
+    <value>Value is required!</value>
   </data>
 </root>

@@ -32,7 +32,7 @@
         </div>
         <div class="dnnFormItem">
             <dnn:Label ID="plEntryCount" runat="server" ControlName="lblEntryCount" />
-            <asp:Label ID="lblEntryCount" runat="server" /> Entries
+            <asp:Label ID="lblEntryCount" runat="server" /> 
         </div>
  
     </div>
@@ -82,7 +82,7 @@
     <asp:HiddenField ID="HiddenFieldParentID" runat="server" />
     <asp:HiddenField ID="HiddenFieldMode" runat="server" />
     <asp:HiddenField ID="HiddenFieldEnableSortOrder" runat="server" />
-    <div id="rowEntryEdit" runat="server" visible="false">
+    <div id="rowEntryEdit" runat="server" visible="false" class="dnnForm">
        
         <div id="rowListName" runat="server" class="dnnFormItem">
             <dnn:Label ID="plEntryName" Text="Entry Name:" runat="server" ControlName="txtEntryName" CssClass="dnnFormRequired" />
