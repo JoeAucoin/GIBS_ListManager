@@ -76,13 +76,6 @@
     <Compile Include="GIBS_ListManagerModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Edit.ascx.cs">
-      <DependentUpon>Edit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Edit.ascx.designer.cs">
-      <DependentUpon>Edit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.cs" />
     <Compile Include="Settings.ascx.cs">
@@ -103,7 +96,6 @@
   <ItemGroup>
     <Content Include="Documentation\Documentation.css" />
     <Content Include="Documentation\Documentation.html" />
-    <Content Include="Edit.ascx" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.txt" />
@@ -123,7 +115,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\Edit.ascx.resx" />
     <Content Include="App_LocalResources\Settings.ascx.resx" />
   </ItemGroup>
   <ItemGroup>

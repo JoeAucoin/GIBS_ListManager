@@ -7,7 +7,7 @@
 
  <div class="col-md-3">
 
-<asp:DropDownList ID="DropDownListSelectList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" ></asp:DropDownList>
+<asp:DropDownList ID="DropDownListSelectList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="ddlgibs" ></asp:DropDownList>
 <div style="padding:6px; text-align:center;">
 <asp:LinkButton ID="LinkButtonAddNewList" runat="server" CssClass="btn btn-primary" OnClick="LinkButtonAddNewList_Click">Add New List</asp:LinkButton> 
 </div>
@@ -38,34 +38,35 @@
     </div>
 
 
-<asp:GridView ID="GV_ListItems" runat="server" AutoGenerateColumns="false" OnRowDataBound="GV_ListItems_RowDataBound" OnRowCommand="GV_ListItems_RowCommand" OnRowDeleting="GV_ListItems_RowDeleting" CssClass="table table-striped table-bordered table-list" >
+<asp:GridView ID="GV_ListItems" runat="server" AutoGenerateColumns="false" OnRowDataBound="GV_ListItems_RowDataBound" 
+    OnRowCommand="GV_ListItems_RowCommand" OnRowDeleting="GV_ListItems_RowDeleting" CssClass="table table-striped table-bordered table-list" >
     <Columns>
-    <asp:BoundField ItemStyle-Width="150px" DataField="Text" HeaderText="Text" />
-    <asp:BoundField ItemStyle-Width="150px" DataField="Value" HeaderText="Value" />
+    <asp:BoundField ItemStyle-Width="150px" DataField="Text" HeaderText="Text" HeaderStyle-Font-Bold="true" />
+    <asp:BoundField ItemStyle-Width="150px" DataField="Value" HeaderText="Value" HeaderStyle-Font-Bold="true" />
         
-    <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Move Up">
+    <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" HeaderText="Move Up">
         <ItemTemplate>
             <asp:HiddenField ID="Hid_ParentID" Value='<%# Bind("ParentID")%>' runat="server" />
 	        <asp:ImageButton CommandName="up" ID="btnUp" ImageUrl='/icons/Sigma/Up_16X16_Standard.png' CommandArgument='<%# Bind("EntryID")%>' runat="server" />
         </ItemTemplate>
     </asp:TemplateField>
-	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Move Down">
+	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Move Down" HeaderStyle-Font-Bold="true">
             <ItemTemplate>
 				<asp:ImageButton CommandName="down" ID="btnDown" ImageUrl='/icons/Sigma/Dn_16X16_Standard.png' CommandArgument='<%# Bind("EntryID")%>' runat="server" />
             </ItemTemplate>
         </asp:TemplateField>
-	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Edit">
+	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" HeaderText="Edit">
             <ItemTemplate>
 				<asp:ImageButton CommandName="edititem" ID="btnEdit" CausesValidation="false" ImageUrl='/icons/Sigma/Edit_16X16_Standard.png' CommandArgument='<%# Bind("EntryID")%>' runat="server" />
             </ItemTemplate>
         </asp:TemplateField>
 		
-	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Delete">
+	    <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" HeaderText="Delete">
             <ItemTemplate>
 				<asp:ImageButton CommandName="deleteme" ID="btnDelete" ImageUrl='/icons/Sigma/Delete_16X16_Standard.png' CommandArgument='<%# Bind("EntryID")%>' runat="server" />
             </ItemTemplate>
         </asp:TemplateField>
-    <asp:BoundField ItemStyle-Width="150px" DataField="ParentKey" HeaderText="ParentKey" Visible="false" />
+    <asp:BoundField ItemStyle-Width="150px" DataField="ParentKey" HeaderText="ParentKey" HeaderStyle-Font-Bold="true" Visible="false" />
 </Columns>
 
 </asp:GridView>
